@@ -1,0 +1,67 @@
+[gd_scene load_steps=15 format=3 uid="uid://b5vyl10xx5jpk"]
+
+[ext_resource type="Script" uid="uid://di57obaroqatu" path="res://xr_origin.gd" id="1_1cx2o"]
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_jw5w6"]
+[ext_resource type="Material" uid="uid://dy6nhifvvmm73" path="res://addons/godot-xr-tools/hands/materials/caucasian_hand.tres" id="2_e2qbk"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_m0ncy"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="2_rturn"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_v0u4l"]
+[ext_resource type="PackedScene" uid="uid://bxm1ply47vaan" path="res://addons/godot-xr-tools/functions/movement_climb.tscn" id="4_g3ggb"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_v0u4l"]
+[ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="5_owk0p"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="6_fnnc4"]
+[ext_resource type="Script" uid="uid://ck4yn3hxuobj7" path="res://addons/godot-xr-tools/player/player_body.gd" id="7_3hom5"]
+[ext_resource type="Script" uid="uid://cjfu28jmrajlo" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="8_yyaeh"]
+
+[sub_resource type="Resource" id="Resource_g3ggb"]
+script = ExtResource("8_yyaeh")
+metadata/_custom_type_script = "uid://deq7b48cvm6k3"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_owk0p"]
+height = 1.8
+
+[node name="XROrigin3D" type="XROrigin3D"]
+script = ExtResource("1_1cx2o")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="leftHand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="leftHand" instance=ExtResource("1_jw5w6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.20106089)
+hand_material_override = ExtResource("2_e2qbk")
+
+[node name="MovementDirect" parent="leftHand" instance=ExtResource("2_m0ncy")]
+strafe = true
+
+[node name="FunctionPickup" parent="leftHand" instance=ExtResource("3_v0u4l")]
+
+[node name="MovementClimb" parent="leftHand" instance=ExtResource("4_g3ggb")]
+
+[node name="rightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3971684)
+tracker = &"right_hand"
+
+[node name="RightHand" parent="rightHand" instance=ExtResource("2_rturn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18562937)
+
+[node name="MovementTurn" parent="rightHand" instance=ExtResource("4_v0u4l")]
+turn_mode = 2
+step_turn_angle = 30.0
+
+[node name="FunctionPickup" parent="rightHand" instance=ExtResource("3_v0u4l")]
+
+[node name="MovementJump" parent="rightHand" instance=ExtResource("6_fnnc4")]
+jump_button_action = "ax_button"
+
+[node name="MovementClimb" parent="rightHand" instance=ExtResource("4_g3ggb")]
+
+[node name="XRToolsPlayerBody" type="CharacterBody3D" parent="."]
+script = ExtResource("7_3hom5")
+physics = SubResource("Resource_g3ggb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRToolsPlayerBody"]
+shape = SubResource("CapsuleShape3D_owk0p")
+
+[node name="MovementFlight" parent="." instance=ExtResource("5_owk0p")]

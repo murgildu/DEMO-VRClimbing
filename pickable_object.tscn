@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbvkoh2pxigoh"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_dbtw8"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_tf64a"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="3_b4pt0"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_gyekt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1xbq"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b381x"]
+albedo_color = Color(1, 0.145098, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tf64a"]
+material = SubResource("StandardMaterial3D_b381x")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Resource" id="Resource_ixssh"]
+script = ExtResource("3_b4pt0")
+metadata/_custom_type_script = "uid://b6eucr0ffogts"
+
+[sub_resource type="Resource" id="Resource_4mai3"]
+script = ExtResource("3_b4pt0")
+metadata/_custom_type_script = "uid://b6eucr0ffogts"
+
+[node name="PickableObject" instance=ExtResource("1_dbtw8")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_m1xbq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" index="0"]
+mesh = SubResource("BoxMesh_tf64a")
+
+[node name="GrabPointHandLeft" parent="." index="1" instance=ExtResource("2_tf64a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0716912, 0, -0.119885)
+hand_pose = SubResource("Resource_ixssh")
+editor_preview_mode = 1
+
+[node name="GrabPointHandRight" parent="." index="2" instance=ExtResource("4_gyekt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0630304, 0, -0.110838)
+hand_pose = SubResource("Resource_4mai3")
+editor_preview_mode = 1
