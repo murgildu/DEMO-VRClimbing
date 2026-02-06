@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5vyl10xx5jpk"]
+[gd_scene load_steps=23 format=3 uid="uid://b5vyl10xx5jpk"]
 
 [ext_resource type="Script" uid="uid://di57obaroqatu" path="res://xr_origin.gd" id="1_1cx2o"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_jw5w6"]
@@ -11,7 +11,29 @@
 [ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="5_owk0p"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="6_fnnc4"]
 [ext_resource type="Script" uid="uid://ck4yn3hxuobj7" path="res://addons/godot-xr-tools/player/player_body.gd" id="7_3hom5"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="7_fkdcj"]
 [ext_resource type="Script" uid="uid://cjfu28jmrajlo" path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" id="8_yyaeh"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="14_vpjol"]
+[ext_resource type="PackedScene" uid="uid://bqw1jl0x3l3l4" path="res://GameGUI.tscn" id="15_gj16u"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_gj16u"]
+resource_local_to_scene = true
+size = Vector2(1.5, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gj16u"]
+viewport_path = NodePath("XRCamera3D/Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1xf1"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_gj16u")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcrgv"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.5, 0.02)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1cx2o"]
 
 [sub_resource type="Resource" id="Resource_g3ggb"]
 script = ExtResource("8_yyaeh")
@@ -21,15 +43,43 @@ metadata/_custom_type_script = "uid://deq7b48cvm6k3"
 height = 1.8
 
 [node name="XROrigin3D" type="XROrigin3D"]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_1cx2o")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 
+[node name="Label1HUD" type="Label3D" parent="XRCamera3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.052113593, 0.2, -1)
+no_depth_test = true
+fixed_size = true
+
+[node name="Viewport2Din3D" parent="XRCamera3D" instance=ExtResource("14_vpjol")]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, -0.2, -1.265)
+screen_size = Vector2(1.5, 0.5)
+scene = ExtResource("15_gj16u")
+viewport_size = Vector2(500, 300)
+scene_properties_keys = PackedStringArray("game_gui.gd")
+
+[node name="Viewport" parent="XRCamera3D/Viewport2Din3D" index="0"]
+size = Vector2i(500, 300)
+
+[node name="Screen" parent="XRCamera3D/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_gj16u")
+surface_material_override/0 = SubResource("StandardMaterial3D_n1xf1")
+
+[node name="StaticBody3D" parent="XRCamera3D/Viewport2Din3D" index="2"]
+screen_size = Vector2(1.5, 0.5)
+viewport_size = Vector2(500, 300)
+
+[node name="CollisionShape3D" parent="XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_jcrgv")
+
 [node name="leftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14012569)
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="leftHand" instance=ExtResource("1_jw5w6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.20106089)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.013171077)
 hand_material_override = ExtResource("2_e2qbk")
 
 [node name="MovementDirect" parent="leftHand" instance=ExtResource("2_m0ncy")]
@@ -37,14 +87,25 @@ strafe = true
 
 [node name="FunctionPickup" parent="leftHand" instance=ExtResource("3_v0u4l")]
 
-[node name="MovementClimb" parent="leftHand" instance=ExtResource("4_g3ggb")]
+[node name="Area3D" type="Area3D" parent="leftHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.050912216, 0.035323907, -0.18235317)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="leftHand/Area3D"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.05043751, -0.02264297, 0.12874246)
+shape = SubResource("SphereShape3D_1cx2o")
+
+[node name="FunctionPointer" parent="leftHand" instance=ExtResource("7_fkdcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 0.05, -0.1)
+distance = 3.0
+show_laser = 2
+laser_length = 1
 
 [node name="rightHand" type="XRController3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3971684)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.52151394)
 tracker = &"right_hand"
 
 [node name="RightHand" parent="rightHand" instance=ExtResource("2_rturn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18562937)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.015235186)
 
 [node name="MovementTurn" parent="rightHand" instance=ExtResource("4_v0u4l")]
 turn_mode = 2
@@ -55,7 +116,18 @@ step_turn_angle = 30.0
 [node name="MovementJump" parent="rightHand" instance=ExtResource("6_fnnc4")]
 jump_button_action = "ax_button"
 
-[node name="MovementClimb" parent="rightHand" instance=ExtResource("4_g3ggb")]
+[node name="Area3D" type="Area3D" parent="rightHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.050912216, 0.035323907, -0.18235317)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rightHand/Area3D"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.05043751, -0.02264297, 0.12874246)
+shape = SubResource("SphereShape3D_1cx2o")
+
+[node name="FunctionPointer" parent="rightHand" instance=ExtResource("7_fkdcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, 0.05, -0.1)
+distance = 3.0
+show_laser = 2
+laser_length = 1
 
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="."]
 script = ExtResource("7_3hom5")
@@ -65,3 +137,10 @@ physics = SubResource("Resource_g3ggb")
 shape = SubResource("CapsuleShape3D_owk0p")
 
 [node name="MovementFlight" parent="." instance=ExtResource("5_owk0p")]
+
+[node name="MovementClimb" parent="." instance=ExtResource("4_g3ggb")]
+forward_push = 2.0
+fling_multiplier = 3.0
+velocity_averages = 100
+
+[editable path="XRCamera3D/Viewport2Din3D"]

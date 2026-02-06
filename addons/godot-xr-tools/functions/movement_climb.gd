@@ -195,46 +195,52 @@ func _set_climbing(active: bool, player_body: XRToolsPlayerBody) -> void:
 
 ## Handler for left controller picked up
 func _on_left_picked_up(what : Node3D) -> void:
-	# Get the climbable
-	var climbable = what as XRToolsClimbable
-	if not climbable:
+	if not enabled:
 		return
+	else:
+		# Get the climbable
+		var climbable = what as XRToolsClimbable
+		if not climbable:
+			return
 
-	# Get the handle
-	_left_handle = climbable.get_grab_handle(_left_pickup_node)
-	if not _left_handle:
-		return
+		# Get the handle
+		_left_handle = climbable.get_grab_handle(_left_pickup_node)
+		if not _left_handle:
+			return
 
-	# Switch dominance to the left handle
-	_dominant = _left_handle
+		# Switch dominance to the left handle
+		_dominant = _left_handle
 
-	# If collision hands present then target the handle
-	if _left_collision_hand:
-		_left_collision_hand.add_target_override(_left_handle, 0)
-	elif _left_hand:
-		_left_hand.add_target_override(_left_handle, 0)
+		# If collision hands present then target the handle
+		if _left_collision_hand:
+			_left_collision_hand.add_target_override(_left_handle, 0)
+		elif _left_hand:
+			_left_hand.add_target_override(_left_handle, 0)
 
 
 ## Handler for right controller picked up
 func _on_right_picked_up(what : Node3D) -> void:
-	# Get the climbable
-	var climbable = what as XRToolsClimbable
-	if not climbable:
+	if not enabled:
 		return
+	else:
+		# Get the climbable
+		var climbable = what as XRToolsClimbable
+		if not climbable:
+			return
 
-	# Get the handle
-	_right_handle = climbable.get_grab_handle(_right_pickup_node)
-	if not _right_handle:
-		return
+		# Get the handle
+		_right_handle = climbable.get_grab_handle(_right_pickup_node)
+		if not _right_handle:
+			return
 
-	# Switch dominance to the right handle
-	_dominant = _right_handle
+		# Switch dominance to the right handle
+		_dominant = _right_handle
 
-	# If collision hands present then target the handle
-	if _right_collision_hand:
-		_right_collision_hand.add_target_override(_right_handle, 0)
-	elif _right_hand:
-		_right_hand.add_target_override(_right_handle, 0)
+		# If collision hands present then target the handle
+		if _right_collision_hand:
+			_right_collision_hand.add_target_override(_right_handle, 0)
+		elif _right_hand:
+			_right_hand.add_target_override(_right_handle, 0)
 
 
 ## Handler for left controller dropped

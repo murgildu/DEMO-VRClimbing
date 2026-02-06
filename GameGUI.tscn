@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqw1jl0x3l3l4"]
+
+[ext_resource type="Script" uid="uid://g4pu2e5854jr" path="res://game_gui.gd" id="1_jvxox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai3fy"]
+bg_color = Color(0.26666668, 0.61960787, 0.9490196, 0.9843137)
+border_color = Color(0.29542762, 0.9265835, 0.67870206, 1)
+corner_radius_top_left = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Panel" type="Panel"]
+offset_right = 500.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ai3fy")
+script = ExtResource("1_jvxox")
+
+[node name="ButtonMinimize" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "-"
+
+[node name="buttonStart" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -15.5
+offset_right = 150.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "START GAME"

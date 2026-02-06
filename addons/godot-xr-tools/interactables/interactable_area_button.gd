@@ -2,7 +2,6 @@
 class_name XRToolsInteractableAreaButton
 extends Area3D
 
-
 ## XR Tools Interactable Area Button script
 ##
 ## The interactable area button detects objects and areas intering its
@@ -124,3 +123,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append("Duration must be a positive number")
 
 	return warnings
+
+func _on_button_pressed(button: Variant) -> void:
+	pass # Replace with function body.

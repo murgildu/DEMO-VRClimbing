@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8uermfji507p"]
+
+[ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="1_86epp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bleam"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fjo5"]
+albedo_color = Color(0, 1.1377786, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8iksm"]
+height = 0.65
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bleam")
+surface_material_override/0 = SubResource("StandardMaterial3D_7fjo5")
+
+[node name="InteractableAreaButton" parent="." instance=ExtResource("1_86epp")]
+collision_layer = 1
+collision_mask = 131073
+button = NodePath("../MeshInstance3D")
+displacement = Vector3(0, -0.05, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableAreaButton"]
+shape = SubResource("CylinderShape3D_8iksm")
