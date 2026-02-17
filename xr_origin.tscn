@@ -48,8 +48,8 @@ script = ExtResource("1_1cx2o")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 
-[node name="Label1HUD" type="Label3D" parent="XRCamera3D"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.052113593, 0.2, -1)
+[node name="cronometer" type="Label3D" parent="XRCamera3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.1, 0.2, -1)
 no_depth_test = true
 fixed_size = true
 
@@ -73,6 +73,17 @@ viewport_size = Vector2(500, 300)
 
 [node name="CollisionShape3D" parent="XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_jcrgv")
+
+[node name="meterCounter" type="Label3D" parent="XRCamera3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.35, 0.2, -1)
+no_depth_test = true
+
+[node name="gameOverLabel" type="Label3D" parent="XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
+no_depth_test = true
+modulate = Color(1, 0, 0.08235294, 1)
+text = "GAME OVER"
 
 [node name="leftHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14012569)
