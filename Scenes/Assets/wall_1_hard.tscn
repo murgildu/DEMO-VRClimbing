@@ -53,7 +53,7 @@ mesh = SubResource("BoxMesh_cegan")
 shape = SubResource("BoxShape3D_82xsv")
 
 [node name="floor2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.622547, 11.639941, -1.9831066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.622547, 10.828988, -1.9831066)
 mesh = SubResource("BoxMesh_cegan")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor2"]
@@ -300,5 +300,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66150284, 8.009052, -1)
 
 [node name="rockClimbObject45" parent="." instance=ExtResource("3_ngi6v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25447845, 9.187389, -1)
+
+[node name="UnstableRockClimb33" parent="." instance=ExtResource("4_15nue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00157, 12.757974, -1)
+
+[node name="rockClimbObject46" parent="." instance=ExtResource("3_ngi6v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6236577, 9.862785, -1)
+
+[node name="rockClimbObject47" parent="." instance=ExtResource("3_ngi6v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0064988, 9.668833, -1)
 
 [editable path="ButtonStop"]
