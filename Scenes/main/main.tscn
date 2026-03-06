@@ -26,13 +26,13 @@ tonemap_mode = 2
 resource_local_to_scene = true
 size = Vector2(1.5, 0.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_io28c"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8lqer"]
 viewport_path = NodePath("XROrigin3D/XRCamera3D/Viewport2Din3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moneo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra8v3"]
 transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_io28c")
+albedo_texture = SubResource("ViewportTexture_8lqer")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dikqp"]
@@ -73,7 +73,7 @@ transform = Transform3D(-0.8660253, -0.4330129, 0.2500001, 0, 0.49999994, 0.8660
 
 [node name="Screen" parent="XROrigin3D/XRCamera3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_7y5iv")
-surface_material_override/0 = SubResource("StandardMaterial3D_moneo")
+surface_material_override/0 = SubResource("StandardMaterial3D_ra8v3")
 
 [node name="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_dikqp")
@@ -119,21 +119,22 @@ xr_origin_3d = NodePath("../XROrigin3D")
 [node name="Label3D" type="Label3D" parent="TimerManager" index="0"]
 
 [node name="wall1Easy" parent="." index="7" instance=ExtResource("7_h0kdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5336895, 10.063167, 9.575199)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70894146, 10.063167, 6.4311485)
 skeleton = NodePath("../..")
 
 [node name="wall1Pilot" parent="." index="8" instance=ExtResource("8_ebke8")]
-transform = Transform3D(-0.010401925, 0, 0.999946, 0, 1, 0, -0.999946, 0, -0.010401925, 13.595589, 5, -0.62117004)
+transform = Transform3D(-0.010401925, 0, 0.999946, 0, 1, 0, -0.999946, 0, -0.010401925, 8.939039, 5, -0.62117004)
 skeleton = NodePath("../..")
 
 [node name="wall1Medium" parent="." index="9" instance=ExtResource("9_ki64f")]
-transform = Transform3D(-0.99998707, 0, 0.00507883, 0, 1, 0, -0.00507883, 0, -0.99998707, 1.049077, 5, -11.735256)
+transform = Transform3D(-0.99998707, 0, 0.00507883, 0, 1, 0, -0.00507883, 0, -0.99998707, 0.36709976, 5, -10.567018)
 skeleton = NodePath("../..")
 
 [node name="wall1Hard" parent="." index="10" instance=ExtResource("10_padk7")]
-transform = Transform3D(0.01924976, 0, -0.9998147, 0, 1, 0, 0.9998147, 0, 0.01924976, -13.705624, 5, 0.7280369)
+transform = Transform3D(0.01924976, 0, -0.9998147, 0, 1, 0, 0.9998147, 0, 0.01924976, -10.321869, 5, 0.7280369)
 skeleton = NodePath("../..")
 
+[connection signal="button_pressed" from="XROrigin3D/rightHand" to="TimerManager" method="_on_right_hand_button_pressed"]
 [connection signal="button_pressed" from="table/ButtonReset/InteractableAreaButton" to="TimerManager" method="reset_timer"]
 [connection signal="button_pressed" from="wall1Easy/ButtonStop/InteractableAreaButton" to="TimerManager" method="stop_timer"]
 [connection signal="button_pressed" from="wall1Pilot/ButtonStop/InteractableAreaButton" to="TimerManager" method="stop_timer"]

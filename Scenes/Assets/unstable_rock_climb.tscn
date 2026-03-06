@@ -24,5 +24,5 @@ shape = SubResource("SphereShape3D_yirme")
 mesh = SubResource("SphereMesh_5wgpt")
 
 [node name="fallTimer" type="Timer" parent="." index="2"]
-wait_time = 2.0
+wait_time = 1.5
 one_shot = true

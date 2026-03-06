@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://brgqd1akrf8lk"]
+[gd_scene load_steps=8 format=3 uid="uid://brgqd1akrf8lk"]
 
 [ext_resource type="Script" uid="uid://b65wvo8ixqk23" path="res://Scenes/Assets/button_reset.gd" id="1_hlwsb"]
 [ext_resource type="PackedScene" uid="uid://cm6ek011irw3h" path="res://Scenes/Assets/buttonStop.tscn" id="2_jp680"]
 [ext_resource type="PackedScene" uid="uid://bs8ii0x3wgvlf" path="res://addons/godot-xr-tools/objects/rock_climb_object.tscn" id="3_jp680"]
+[ext_resource type="PackedScene" uid="uid://2nj0ifcjupje" path="res://Scenes/Assets/unstable_rock_climb.tscn" id="4_f8efi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
 albedo_color = Color(0.08627451, 0.34901962, 0.9607843, 1)
@@ -196,5 +197,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2636274, -1.1404395, -1)
 
 [node name="rockClimbObject57" parent="." instance=ExtResource("3_jp680")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0638762, -2.80777, -1)
+
+[node name="UnstableRockClimb" parent="." instance=ExtResource("4_f8efi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8835764, 0, -1)
+
+[node name="UnstableRockClimb2" parent="." instance=ExtResource("4_f8efi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4385648, 3.087227, -1)
+
+[node name="UnstableRockClimb3" parent="." instance=ExtResource("4_f8efi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9703112, 1.6907501, -1)
+
+[node name="UnstableRockClimb4" parent="." instance=ExtResource("4_f8efi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17153168, 4.619812, -1)
+
+[node name="UnstableRockClimb5" parent="." instance=ExtResource("4_f8efi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3536191, 5.4380264, -1)
+
+[node name="rockClimbObject58" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9465666, 0.6688242, -1)
+
+[node name="rockClimbObject59" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3919244, 6.302805, -1)
+
+[node name="rockClimbObject60" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.425535, 3.8327298, -1)
+
+[node name="rockClimbObject61" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.567708, 5.7457504, -1)
+
+[node name="rockClimbObject62" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9902253, 2.1124249, -1)
+
+[node name="rockClimbObject63" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7008009, 7.588891, -1)
+
+[node name="rockClimbObject64" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5190291, 7.588891, -1)
+
+[node name="rockClimbObject65" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7008009, 8.6059065, -1)
+
+[node name="rockClimbObject66" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1010113, 6.4035673, -1)
+
+[node name="rockClimbObject67" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.007024, -7.3750296, -1)
+
+[node name="rockClimbObject68" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3191974, 2.8221636, -1)
+
+[node name="rockClimbObject69" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4683504, 5.691882, -1)
+
+[node name="rockClimbObject70" parent="." instance=ExtResource("3_jp680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3677926, 4.143484, -1)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-0.7660445, 0, -0.6427876, 0, 1, 0, 0.6427876, 0, -0.7660445, 4, -6.5, -3.3)
+text = "Be carefull with orange rocks. They disapear after 1.5 seconds being grabbed"
+uppercase = true
+autowrap_mode = 1
+
+[node name="UnstableRockClimb6" parent="." instance=ExtResource("4_f8efi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52837706, 1.5122471, -1)
+
+[node name="UnstableRockClimb7" parent="." instance=ExtResource("4_f8efi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.300437, -1.0819187, -1)
 
 [editable path="ButtonStop"]

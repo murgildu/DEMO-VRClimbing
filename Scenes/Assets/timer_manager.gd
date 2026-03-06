@@ -30,7 +30,7 @@ func update_has_fallen():
 	if current_y > max_height:
 		max_height = current_y
 		
-	if is_running and (max_height - current_y) > 2.0:
+	if is_running and (max_height - current_y) > 3.0:
 		has_fallen = true
 
 func update_display():
@@ -105,3 +105,8 @@ func set_climbing_enabled(enabled: bool):
 
 func set_flight_enabled(enabled: bool):
 	if flight_node: flight_node.enabled = enabled
+
+
+func _on_right_hand_button_pressed(name: String) -> void:
+	if name == "by_button":
+		reset_timer()
