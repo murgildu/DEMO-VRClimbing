@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdhnqs8w0qg4m"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_futyh"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_futyh"]
+resource_local_to_scene = true
+size = Vector2(1.5, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1vdp0"]
+viewport_path = NodePath("XROrigin3D/XRCamera3D/Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h38ah"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_1vdp0")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8r0a8"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.5, 0.02)
+
+[node name="SceneBase" instance=ExtResource("1_futyh")]
+
+[node name="Screen" parent="XROrigin3D/XRCamera3D/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_futyh")
+surface_material_override/0 = SubResource("StandardMaterial3D_h38ah")
+
+[node name="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_8r0a8")
+
+[editable path="XROrigin3D"]
+[editable path="XROrigin3D/XRCamera3D/Viewport2Din3D"]

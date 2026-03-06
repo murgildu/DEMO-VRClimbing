@@ -2,11 +2,9 @@ extends Panel
 
 @onready var button_start = $buttonStart
 @onready var button_minimize = $ButtonMinimize
-
-var timer_manager
+@onready var timer_manager = get_tree().get_first_node_in_group("TimerManager")	
 
 func _ready():
-	timer_manager = get_node("/root/main/TimerManager")	
 	
 	if timer_manager:
 		timer_manager.game_ui_node = self

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://2nj0ifcjupje"]
+
+[ext_resource type="PackedScene" uid="uid://bs8ii0x3wgvlf" path="res://addons/godot-xr-tools/objects/rock_climb_object.tscn" id="1_yirme"]
+[ext_resource type="Script" uid="uid://bjgney0e1nf2q" path="res://Scenes/Assets/unstable_rock_climb.gd" id="2_mwima"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yirme"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwima"]
+albedo_color = Color(1, 0.3019608, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5wgpt"]
+material = SubResource("StandardMaterial3D_mwima")
+radius = 0.1
+height = 0.2
+
+[node name="UnstableRockClimb" instance=ExtResource("1_yirme")]
+script = ExtResource("2_mwima")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_yirme")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("SphereMesh_5wgpt")
+
+[node name="fallTimer" type="Timer" parent="." index="2"]
+wait_time = 2.0
+one_shot = true

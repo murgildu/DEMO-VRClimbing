@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfk4pijbbwymo"]
+
+[ext_resource type="Script" uid="uid://b65wvo8ixqk23" path="res://Scenes/Assets/button_reset.gd" id="1_q23p4"]
+[ext_resource type="PackedScene" uid="uid://cm6ek011irw3h" path="res://Scenes/Assets/buttonStop.tscn" id="2_j6pwa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w48qg"]
+albedo_color = Color(1, 0.33333334, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vivmo"]
+material = SubResource("StandardMaterial3D_w48qg")
+size = Vector3(10, 35, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2cqfq"]
+size = Vector3(10, 35, 2)
+
+[node name="wall1Medium" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_vivmo")
+script = ExtResource("1_q23p4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_2cqfq")
+
+[node name="ButtonStop" parent="." instance=ExtResource("2_j6pwa")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 16.320171, -1.3480263)
+
+[editable path="ButtonStop"]

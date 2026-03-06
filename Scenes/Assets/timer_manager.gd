@@ -105,4 +105,3 @@ func set_climbing_enabled(enabled: bool):
 
 func set_flight_enabled(enabled: bool):
 	if flight_node: flight_node.enabled = enabled
-	

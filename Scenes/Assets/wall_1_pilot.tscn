@@ -1,0 +1,236 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl0awnsey2rp5"]
+
+[ext_resource type="Script" uid="uid://b65wvo8ixqk23" path="res://Scenes/Assets/button_reset.gd" id="1_d17op"]
+[ext_resource type="PackedScene" uid="uid://cm6ek011irw3h" path="res://Scenes/Assets/buttonStop.tscn" id="2_vukgs"]
+[ext_resource type="PackedScene" uid="uid://bs8ii0x3wgvlf" path="res://addons/godot-xr-tools/objects/rock_climb_object.tscn" id="3_vukgs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry0b3"]
+albedo_color = Color(0.28627452, 0.60784316, 0.1764706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iu7if"]
+material = SubResource("StandardMaterial3D_ry0b3")
+size = Vector3(10, 10, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqrhs"]
+size = Vector3(10, 10, 2)
+
+[node name="wall1Pilot" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_iu7if")
+script = ExtResource("1_d17op")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_eqrhs")
+
+[node name="ButtonStop" parent="." instance=ExtResource("2_vukgs")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.0767946, -1.3480272)
+
+[node name="rockClimbObject" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0, 0, -1)
+
+[node name="rockClimbObject2" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 2.5306635, -3.3945866, -1)
+
+[node name="rockClimbObject3" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 4.250121, -2.569108, -1)
+
+[node name="rockClimbObject4" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0.9121232, -2.7196069, -1)
+
+[node name="rockClimbObject5" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -2.1225162, -3.0376549, -1)
+
+[node name="rockClimbObject6" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.39159, -2.4089646, -1)
+
+[node name="rockClimbObject7" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -1.6822736, -1.5343299, -1)
+
+[node name="rockClimbObject8" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.9314532, -1.4408504, -1)
+
+[node name="rockClimbObject9" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0.07496452, -1.5001769, -1)
+
+[node name="rockClimbObject10" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 3.8003972, -0.86868834, -1)
+
+[node name="rockClimbObject11" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.4576602, -0.39374197, -1)
+
+[node name="rockClimbObject12" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -2.141521, -0.49883962, -1)
+
+[node name="rockClimbObject13" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.8635082, -0.38162386, -1)
+
+[node name="rockClimbObject14" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 3.432507, 0.55434084, -1)
+
+[node name="rockClimbObject15" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -2.2689059, 0.694958, -1)
+
+[node name="rockClimbObject16" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.1635833, 0.90716577, -1)
+
+[node name="rockClimbObject17" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0, 1.7101488, -1)
+
+[node name="rockClimbObject18" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 2.5303836, 2.0631948, -1)
+
+[node name="rockClimbObject19" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 4.0583315, 2.210045, -1)
+
+[node name="rockClimbObject20" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.9406645, 1.2953839, -1)
+
+[node name="rockClimbObject21" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.100073, 2.4659991, -1)
+
+[node name="rockClimbObject22" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -1.3714206, 2.2900448, -1)
+
+[node name="rockClimbObject23" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 2.2764878, 3.177392, -1)
+
+[node name="rockClimbObject24" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.2245572, 3.6296976, -1)
+
+[node name="rockClimbObject25" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.676858, 4.076132, -1)
+
+[node name="rockClimbObject26" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 3.473378, 3.8790302, -1)
+
+[node name="rockClimbObject27" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -2.1520095, 3.4768066, -1)
+
+[node name="rockClimbObject28" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -4.1804314, 2.9217832, -1)
+
+[node name="rockClimbObject29" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0.9076414, 2.7614305, -1)
+
+[node name="rockClimbObject30" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -1.2984527, 4.001464, -1)
+
+[node name="rockClimbObject31" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -0.8561896, -3.4114978, -1)
+
+[node name="rockClimbObject32" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.7402856, 0.445472, -1)
+
+[node name="rockClimbObject33" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -1.2202933, 0.96028113, -1)
+
+[node name="rockClimbObject34" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -0.28178954, -2.6324592, -1)
+
+[node name="rockClimbObject35" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 2.7976465, 0, -1)
+
+[node name="rockClimbObject36" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0.61523557, -3.5010042, -1)
+
+[node name="rockClimbObject37" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.028885, -1.6053702, -1)
+
+[node name="rockClimbObject38" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -0.7959466, -0.5229881, -1)
+
+[node name="rockClimbObject39" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.028885, -4.0401735, -1)
+
+[node name="rockClimbObject40" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -4.0445547, -3.4436874, -1)
+
+[node name="rockClimbObject41" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -3.028885, -0.25883353, -1)
+
+[node name="rockClimbObject42" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -4.204567, -1.6053702, -1)
+
+[node name="rockClimbObject43" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 3.1057186, -2.3983948, -1)
+
+[node name="rockClimbObject44" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.8308148, -2.5221324, -1)
+
+[node name="rockClimbObject45" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.2718534, -1.6053702, -1)
+
+[node name="rockClimbObject46" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0.6755705, -0.3956641, -1)
+
+[node name="rockClimbObject47" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0.11204612, 0.70020044, -1)
+
+[node name="rockClimbObject48" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 3.2190237, -1.6053702, -1)
+
+[node name="rockClimbObject49" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 2.6262403, 1.0665969, -1)
+
+[node name="rockClimbObject50" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -2.6999664, 1.4622701, -1)
+
+[node name="rockClimbObject51" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -0.726172, 1.8113831, -1)
+
+[node name="rockClimbObject52" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -2.422763, 2.2657056, -1)
+
+[node name="rockClimbObject53" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 2.0058193, 0.36775815, -1)
+
+[node name="rockClimbObject54" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 3.6560435, 1.579007, -1)
+
+[node name="rockClimbObject55" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 3.5750895, 2.832264, -1)
+
+[node name="rockClimbObject56" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.5950665, 1.8814958, -1)
+
+[node name="rockClimbObject57" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -0.5608094, 2.6808805, -1)
+
+[node name="rockClimbObject58" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.1580238, 3.5540977, -1)
+
+[node name="rockClimbObject59" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 2.4403167, 4.168732, -1)
+
+[node name="rockClimbObject60" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -2.2755072, 4.2819114, -1)
+
+[node name="rockClimbObject61" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -1.5703192, 3.0573044, -1)
+
+[node name="rockClimbObject62" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -1.3331962, 0.17828298, -1)
+
+[node name="rockClimbObject63" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 0.85386205, 1.8915639, -1)
+
+[node name="rockClimbObject64" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -1.2093302, -2.371609, -1)
+
+[node name="rockClimbObject65" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 3.7957654, -3.7559621, -1)
+
+[node name="rockClimbObject66" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 1.4810486, -3.6354022, -1)
+
+[node name="rockClimbObject67" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -4.0348573, 1.9073743, -1)
+
+[node name="rockClimbObject68" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, 4.1346083, 0.35186005, -1)
+
+[node name="rockClimbObject69" parent="." instance=ExtResource("3_vukgs")]
+transform = Transform3D(0.99993163, 0, -0.011693439, 0, 1, 0, 0.011693439, 0, 0.99993163, -1.8154943, -4.2920113, -1)
+
+[editable path="ButtonStop"]

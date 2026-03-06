@@ -1,0 +1,153 @@
+[gd_scene load_steps=24 format=3 uid="uid://chc33d0b1qldv"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_8lqer"]
+[ext_resource type="Texture2D" uid="uid://tjs6w4i02b51" path="res://assets/wahooney.itch.io/green_grid.png" id="2_7y5iv"]
+[ext_resource type="PackedScene" uid="uid://c8uermfji507p" path="res://Scenes/Assets/buttonReset.tscn" id="4_moneo"]
+[ext_resource type="PackedScene" uid="uid://dbvkoh2pxigoh" path="res://Scenes/Assets/pickable_object.tscn" id="5_1xtop"]
+[ext_resource type="Script" uid="uid://bbguoc8cupic8" path="res://Scenes/Assets/timer_manager.gd" id="6_dikqp"]
+[ext_resource type="PackedScene" uid="uid://brgqd1akrf8lk" path="res://Scenes/Assets/wall_1_easy.tscn" id="7_h0kdk"]
+[ext_resource type="PackedScene" uid="uid://bl0awnsey2rp5" path="res://Scenes/Assets/wall_1_pilot.tscn" id="8_ebke8"]
+[ext_resource type="PackedScene" uid="uid://dfk4pijbbwymo" path="res://Scenes/Assets/wall_1_medium.tscn" id="9_ki64f"]
+[ext_resource type="PackedScene" uid="uid://ua54mtqtjoc2" path="res://Scenes/Assets/wall_1_hard.tscn" id="10_padk7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8lqer"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_8lqer")
+
+[sub_resource type="Environment" id="Environment_ra8v3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+tonemap_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_7y5iv"]
+resource_local_to_scene = true
+size = Vector2(1.5, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_io28c"]
+viewport_path = NodePath("XROrigin3D/XRCamera3D/Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moneo"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_io28c")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dikqp"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.5, 0.02)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1xtop"]
+size = Vector3(150, 0.1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c57u"]
+albedo_texture = ExtResource("2_7y5iv")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dikqp"]
+material = SubResource("StandardMaterial3D_4c57u")
+size = Vector3(150, 0.1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(0.152173, 0.152173, 0.152173, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h0kdk"]
+material = SubResource("StandardMaterial3D_0xm2m")
+size = Vector3(3, 1, 0.35)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebke8"]
+albedo_color = Color(0.4639135, 0.24825332, 2.8878452e-07, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ki64f"]
+size = Vector3(3, 1, 0.35)
+
+[node name="SceneBase" instance=ExtResource("1_8lqer")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_ra8v3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(-0.8660253, -0.4330129, 0.2500001, 0, 0.49999994, 0.86602545, -0.50000024, 0.74999994, -0.43301257, 0, 0, 0)
+
+[node name="Screen" parent="XROrigin3D/XRCamera3D/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_7y5iv")
+surface_material_override/0 = SubResource("StandardMaterial3D_moneo")
+
+[node name="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_dikqp")
+
+[node name="ground" type="StaticBody3D" parent="." index="3"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_1xtop")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.102954)
+mesh = SubResource("BoxMesh_dikqp")
+skeleton = NodePath("../..")
+
+[node name="table" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, -2.341)
+mesh = SubResource("BoxMesh_h0kdk")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ebke8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_ki64f")
+
+[node name="ButtonReset" parent="table" index="1" instance=ExtResource("4_moneo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.9, 0.6, 0)
+
+[node name="PickableObject" parent="." index="5" instance=ExtResource("5_1xtop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1070664, -2.3)
+
+[node name="TimerManager" type="Node3D" parent="." index="6" node_paths=PackedStringArray("hud_meter_label", "hud_timer_label", "game_over_label", "climb_node", "flight_node", "xr_origin_3d") groups=["TimerManager"]]
+script = ExtResource("6_dikqp")
+hud_meter_label = NodePath("../XROrigin3D/XRCamera3D/meterCounter")
+hud_timer_label = NodePath("../XROrigin3D/XRCamera3D/cronometer")
+game_over_label = NodePath("../XROrigin3D/XRCamera3D/gameOverLabel")
+climb_node = NodePath("../XROrigin3D/MovementClimb")
+flight_node = NodePath("../XROrigin3D/MovementFlight")
+xr_origin_3d = NodePath("../XROrigin3D")
+
+[node name="Label3D" type="Label3D" parent="TimerManager" index="0"]
+
+[node name="wall1Easy" parent="." index="7" instance=ExtResource("7_h0kdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5336895, 10.063167, 9.575199)
+skeleton = NodePath("../..")
+
+[node name="wall1Pilot" parent="." index="8" instance=ExtResource("8_ebke8")]
+transform = Transform3D(-0.010401925, 0, 0.999946, 0, 1, 0, -0.999946, 0, -0.010401925, 13.595589, 5, -0.62117004)
+skeleton = NodePath("../..")
+
+[node name="wall1Medium" parent="." index="9" instance=ExtResource("9_ki64f")]
+transform = Transform3D(-0.99998707, 0, 0.00507883, 0, 1, 0, -0.00507883, 0, -0.99998707, 1.049077, 5, -11.735256)
+skeleton = NodePath("../..")
+
+[node name="wall1Hard" parent="." index="10" instance=ExtResource("10_padk7")]
+transform = Transform3D(0.01924976, 0, -0.9998147, 0, 1, 0, 0.9998147, 0, 0.01924976, -13.705624, 5, 0.7280369)
+skeleton = NodePath("../..")
+
+[connection signal="button_pressed" from="table/ButtonReset/InteractableAreaButton" to="TimerManager" method="reset_timer"]
+[connection signal="button_pressed" from="wall1Easy/ButtonStop/InteractableAreaButton" to="TimerManager" method="stop_timer"]
+[connection signal="button_pressed" from="wall1Pilot/ButtonStop/InteractableAreaButton" to="TimerManager" method="stop_timer"]
+[connection signal="button_pressed" from="wall1Medium/ButtonStop/InteractableAreaButton" to="TimerManager" method="stop_timer"]
+[connection signal="button_pressed" from="wall1Hard/ButtonStop/InteractableAreaButton" to="TimerManager" method="stop_timer"]
+
+[editable path="XROrigin3D"]
+[editable path="XROrigin3D/XRCamera3D/Viewport2Din3D"]
+[editable path="table/ButtonReset"]
+[editable path="wall1Easy"]
+[editable path="wall1Easy/ButtonStop"]
+[editable path="wall1Pilot"]
+[editable path="wall1Pilot/ButtonStop"]
+[editable path="wall1Medium"]
+[editable path="wall1Medium/ButtonStop"]
+[editable path="wall1Hard"]
+[editable path="wall1Hard/ButtonStop"]

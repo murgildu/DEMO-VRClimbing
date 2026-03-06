@@ -1,22 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://qbmx03iibuuu"]
+[gd_scene load_steps=7 format=3 uid="uid://qbmx03iibuuu"]
 
 [ext_resource type="Script" uid="uid://177gygw2xqqu" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://b5vyl10xx5jpk" path="res://Scenes/Assets/xr_origin.tscn" id="2_e7prd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dpium"]
+resource_local_to_scene = true
+size = Vector2(1.5, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e7prd"]
+viewport_path = NodePath("XROrigin3D/XRCamera3D/Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpium"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_e7prd")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fjtjg"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.5, 0.02)
 
 [node name="SceneBase" type="Node3D"]
 script = ExtResource("1")
 
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
+[node name="XROrigin3D" parent="." instance=ExtResource("2_e7prd")]
+transform = Transform3D(-0.99944735, 0, -0.03324245, 0, 1, 0, 0.03324245, 0, -0.99944735, 0, 0.750601, -1.34224)
 
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-far = 300.0
+[node name="Screen" parent="XROrigin3D/XRCamera3D/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_dpium")
+surface_material_override/0 = SubResource("StandardMaterial3D_dpium")
 
-[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
-tracker = &"left_hand"
-pose = &"aim"
+[node name="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_fjtjg")
 
-[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
-tracker = &"right_hand"
-pose = &"aim"
+[editable path="XROrigin3D"]
+[editable path="XROrigin3D/XRCamera3D/Viewport2Din3D"]
