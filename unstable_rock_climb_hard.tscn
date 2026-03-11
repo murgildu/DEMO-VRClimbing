@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy1nv5uofnujh"]
+
+[ext_resource type="Script" uid="uid://dye1qnttehaix" path="res://unstable_rock_climb_hard.gd" id="1_nqufu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uxc5x"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ct8w1"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uualm"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8vg3d"]
+material = SubResource("StandardMaterial3D_uualm")
+radius = 0.1
+height = 0.2
+
+[node name="UnstableRockClimbHard" type="StaticBody3D"]
+collision_layer = 262145
+collision_mask = 0
+script = ExtResource("1_nqufu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_uxc5x")
+
+[node name="fallTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ct8w1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_8vg3d")
