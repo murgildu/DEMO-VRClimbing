@@ -21,8 +21,12 @@ script = ExtResource("2_mwima")
 shape = SubResource("SphereShape3D_yirme")
 
 [node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("SphereMesh_5wgpt")
 
 [node name="fallTimer" type="Timer" parent="." index="2"]
 wait_time = 1.5
 one_shot = true
+
+[node name="Presa" parent="." index="3"]
+visible = false

@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs8ii0x3wgvlf"]
+[gd_scene load_steps=6 format=3 uid="uid://bs8ii0x3wgvlf"]
 
 [ext_resource type="PackedScene" uid="uid://cjyilbm4ucc7s" path="res://addons/godot-xr-tools/objects/climbable.tscn" id="1_yxcuq"]
+[ext_resource type="PackedScene" uid="uid://clxgcx1p3gp82" path="res://Presa.glb" id="2_pvtyb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pvtyb"]
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qtyf"]
-albedo_color = Color(1, 1, 0.0588235, 1)
+albedo_color = Color(1, 0, 0.05882353, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ow1lj"]
 material = SubResource("StandardMaterial3D_4qtyf")
-size = Vector3(0.1, 0.1, 0.1)
+size = Vector3(0.2, 0.085, 0.1)
 
 [node name="rockClimbObject" instance=ExtResource("1_yxcuq")]
 
@@ -18,5 +19,9 @@ size = Vector3(0.1, 0.1, 0.1)
 shape = SubResource("BoxShape3D_pvtyb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016039453, 0)
 mesh = SubResource("BoxMesh_ow1lj")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="Presa" parent="." index="2" instance=ExtResource("2_pvtyb")]
+transform = Transform3D(-0.14988944, 0.0057581714, -1.7484556e-08, 0.0057581714, 0.14988944, 0, 1.3103751e-08, -5.033953e-10, -0.2, -0.4985526, -0.0757217, -0.07609479)

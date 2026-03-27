@@ -20,13 +20,13 @@
 resource_local_to_scene = true
 size = Vector2(1.5, 0.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gj16u"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_orjik"]
 viewport_path = NodePath("XRCamera3D/Viewport2Din3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1xf1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqsxp"]
 transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_gj16u")
+albedo_texture = SubResource("ViewportTexture_orjik")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jcrgv"]
@@ -65,7 +65,7 @@ size = Vector2i(500, 300)
 
 [node name="Screen" parent="XRCamera3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_gj16u")
-surface_material_override/0 = SubResource("StandardMaterial3D_n1xf1")
+surface_material_override/0 = SubResource("StandardMaterial3D_hqsxp")
 
 [node name="StaticBody3D" parent="XRCamera3D/Viewport2Din3D" index="2"]
 screen_size = Vector2(1.5, 0.5)
